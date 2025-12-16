@@ -1,47 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+<meta charset="UTF-8" />
 
-  <!-- IMPORTANT for mobile WebView -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<!-- IMPORTANT for mobile WebView -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
-  <title>ServiceNow Engagement Messenger – WebView Test - Mobile</title>
+<title>ServiceNow Engagement Messenger – WebView Test - Mobile</title>
 
-  <style>
-    body {
-      margin: 0;
-      padding: 16px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #f7f7f7;
-    }
+<style>
+body {
+  margin: 0;
+  padding: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #f7f7f7;
+}
 
-    h1 {
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
+h1 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
 
-    p {
-      font-size: 14px;
-      color: #555;
-    }
-  </style>
+p {
+  font-size: 14px;
+  color: #555;
+}
+</style>
 </head>
 
 <body>
-  <h1>Engagement Messenger WebView Test</h1>
-  <p>
-    This page is hosted on GitHub Pages and simulates a mobile WebView environment.
-  </p>
+<h1>Engagement Messenger WebView Test</h1>
+<p>
+This page is hosted on GitHub Pages and simulates a mobile WebView environment.
+</p>
 
-  
-  <!-- ServiceNow Engagement Messenger -->
+<h2>Engagement Messenger Auth Test</h2>
+
+<button onclick="login()">Simulate Login</button>
+<button onclick="logout()">Simulate Logout</button>
+
+<!-- ServiceNow Engagement Messenger -->
 <script src="https://conwaresolutionssrosvsdemo9.service-now.com/scripts/sn_csm_ec.js?v=5.6"></script>
 <script>
 SN_CSM_EC.init({
-	moduleID: "https://conwaresolutionssrosvsdemo9.service-now.com/#91dfd2e4936df2501001be9887373cd6",
-	loadFeature: SN_CSM_EC.loadEMFeature()
+moduleID: "https://conwaresolutionssrosvsdemo9.service-now.com/#91dfd2e4936df2501001be9887373cd6",
+loadFeature: SN_CSM_EC.loadEMFeature()
 });
+
+
+function login() {
+  console.log("Simulating login");
+  SN_CSM_EC.onLogin();
+}
+
+function logout() {
+  console.log("Simulating logout");
+  SN_CSM_EC.onLogout();
+}
+
+
+
 </script>
 </body>
 </html>
