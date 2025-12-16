@@ -2,15 +2,79 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>WebView Test</title>
-</head>
-<body>
-  <h1>WebView Test Page</h1>
-  <p>If you can read this on mobile, WebView works.</p>
 
-  <button onclick="alert('JavaScript works')">
-    Test JavaScript
-  </button>
+  <!-- Required for mobile WebView -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <title>WebView Test Page</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f4f6f8;
+    }
+
+    h1 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 14px;
+      color: #444;
+    }
+
+    button {
+      margin-top: 12px;
+      padding: 12px 16px;
+      font-size: 14px;
+      border: none;
+      border-radius: 6px;
+      background: #006edc;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:active {
+      background: #0053a6;
+    }
+
+    .box {
+      margin-top: 16px;
+      padding: 12px;
+      background: white;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Mobile WebView Test</h1>
+  <p>
+    This page is used to verify that a mobile WebView loads and executes JavaScript correctly.
+  </p>
+
+  <button onclick="testJs()">Test JavaScript</button>
+
+  <div class="box" id="output">
+    Waiting for interaction…
+  </div>
+
+  <script>
+    function testJs() {
+      // JS execution test
+      const now = new Date().toLocaleString();
+
+      // localStorage test
+      localStorage.setItem("webview_test", now);
+
+      document.getElementById("output").innerHTML =
+        "<strong>JavaScript works ✔</strong><br>" +
+        "Timestamp stored in localStorage:<br>" +
+        now;
+    }
+  </script>
 </body>
 </html>
