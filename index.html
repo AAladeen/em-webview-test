@@ -44,7 +44,9 @@ This page is hosted on GitHub Pages and simulates a mobile WebView environment.
 <script>
 SN_CSM_EC.init({
 moduleID: "https://conwaresolutionssrosvsdemo9.service-now.com/#91dfd2e4936df2501001be9887373cd6",
-loadFeature: SN_CSM_EC.loadEMFeature()
+
+  loadFeature: chatFeatureContext()
+//loadFeature: SN_CSM_EC.loadEMFeature()
 });
 
 
@@ -57,7 +59,17 @@ function logout() {
   console.log("Simulating logout");
   SN_CSM_EC.onLogout();
 }
-
+  
+function chatFeatureContext(){ 
+	return { 
+			feature: "CHAT",
+			openOnLoad: false,
+			params: { 
+				"topic_id": "ec9a10d25373101019dfddeeff7b1237",
+				"language": "fr"		
+				} 
+		  } 
+}
 
 
 </script>
