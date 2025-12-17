@@ -46,7 +46,7 @@ SN_CSM_EC.init({
 moduleID: "https://conwaresolutionssrosvsdemo9.service-now.com/#91dfd2e4936df2501001be9887373cd6",
 
   loadFeature: chatFeatureContext()
-//loadFeature: SN_CSM_EC.loadEMFeature()
+
 });
 
 
@@ -63,10 +63,9 @@ function logout() {
 function chatFeatureContext(){ 
 	return { 
 			feature: "CHAT",
-			openOnLoad: false,
+			openOnLoad: true,
 			params: { 
-				"topic_id": "ec9a10d25373101019dfddeeff7b1237",
-				"language": "fr"		
+				"topic_id": "ce2ee85053130010cf8cddeeff7b12bf"
 				} 
 		  } 
 }
