@@ -29,7 +29,7 @@ p {
 </head>
 
 <body>
-<h1>Engagement Messenger WebView Test 4</h1>
+<h1>Engagement Messenger WebView Test 5</h1>
 <p>
 This page is hosted on GitHub Pages and simulates a mobile WebView environment.
 </p>
@@ -43,12 +43,9 @@ This page is hosted on GitHub Pages and simulates a mobile WebView environment.
 <script src="https://conwaresolutionssrosvsdemo9.service-now.com/scripts/sn_csm_ec.js?v=5.6"></script>
 <script>
 SN_CSM_EC.init({
-moduleID: "https://conwaresolutionssrosvsdemo9.service-now.com/#91dfd2e4936df2501001be9887373cd6",
-
-  loadFeature: chatFeatureContext()
-
+	moduleID: "https://conwaresolutionssrosvsdemo9.service-now.com/#91dfd2e4936df2501001be9887373cd6",
+	loadFeature: SN_CSM_EC.loadEMFeature()
 });
-
 
 function login() {
   console.log("Simulating login");
