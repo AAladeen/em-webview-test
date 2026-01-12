@@ -29,15 +29,13 @@ color: #555;
 </head>
 
 <body>
-<h1>Engagement Messenger WebView Test 20</h1>
-<p>
-This page is hosted on GitHub Pages and simulates a mobile WebView environment.
-</p>
+<h1>Engagement Messenger Test 21</h1>
 
-<h2>Engagement Messenger Auth Test</h2>
 
-<button onclick="Contact()">Contact Us</button>
-
+<button onclick="Contact()">Contact Us with defined Plaer ID</button>
+<br>
+<button onclick="Contact2()">Contact Us as guest</button>
+	
 <!-- ServiceNow Engagement Messenger -->
 <script src="https://conwaresolutionssrosvsdemo9.service-now.com/scripts/sn_csm_ec.js?v=5.6"></script>
 <script>
@@ -75,6 +73,17 @@ loadFeature: StartEM(ID)
 });
 }
 
+	
+function Contact2() {
+console.log("Simulating Contact");
+SN_CSM_EC.init({
+moduleID: "https://conwaresolutionssrosvsdemo9.service-now.com/#91dfd2e4936df2501001be9887373cd6",
+//	loadFeature: SN_CSM_EC.loadEMFeature()
+
+loadFeature: StartEMempty(ID)
+});
+}
+
 function StartEM(userID){ 
 
 if(userID){
@@ -92,6 +101,23 @@ return {
 	  } 
 }
 
+	
+function StartEMempty(userID){ 
+
+if(userID){
+	return SN_CSM_EC.loadEMFeature();
+}
+
+return { 
+		feature: "CHAT",
+		openOnLoad: true,
+		params: { 
+			"topic_id": "aa0e685053130010cf8cddeeff7b127d", 
+			"sysparm_queue":emContext, //pass the value to context vairable to route the chat request.
+			"sysparm_delasport_branch":"" //pass the value to context vairable to route the chat request.
+			} 
+	  } 
+}
 
 </script>
 </body>
