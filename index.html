@@ -29,15 +29,17 @@ color: #555;
 </head>
 
 <body>
-<h1>Engagement Messenger Test 23</h1>
+<h1>Engagement Messenger Test 24</h1>
 
-
-<button onclick="Contact()">Contact Us with defined Plaer ID</button>
-<div>
-	
+<div style="display: flex; flex-direction: column; gap: 20px; max-width: 300px;">
+  <button onclick="Contact()" style="padding: 12px 24px; font-size: 16px; cursor: pointer; border-radius: 6px; border: 1px solid #ccc; background-color: #007bff; color: white; transition: background-color 0.3s;">
+    Contact Us with Defined Player ID
+  </button>
+  
+  <button onclick="Contact2()" style="padding: 12px 24px; font-size: 16px; cursor: pointer; border-radius: 6px; border: 1px solid #ccc; background-color: #6c757d; color: white; transition: background-color 0.3s;">
+    Contact Us as Guest
+  </button>
 </div>
-<button onclick="Contact2()">Contact Us as guest</button>
-	
 <!-- ServiceNow Engagement Messenger -->
 <script src="https://conwaresolutionssrosvsdemo9.service-now.com/scripts/sn_csm_ec.js?v=5.6"></script>
 <script>
@@ -99,6 +101,9 @@ return {
 			"topic_id": "aa0e685053130010cf8cddeeff7b127d", 
 			"sysparm_queue":emContext, //pass the value to context vairable to route the chat request.
 			"sysparm_delasport_branch":"wl-222", //pass the value to context vairable to route the chat request.
+"sysparm_delasport_player_id":"01234567890" //pass the value to context vairable to route the chat request.
+
+			
 			} 
 	  } 
 }
@@ -117,6 +122,7 @@ return {
 			"topic_id": "aa0e685053130010cf8cddeeff7b127d", 
 			"sysparm_queue":emContext, //pass the value to context vairable to route the chat request.
 			"sysparm_delasport_branch":"", //pass the value to context vairable to route the chat request.
+"sysparm_delasport_player_id":"" //pass the value to context vairable to route the chat request.
 
 			} 
 	  } 
