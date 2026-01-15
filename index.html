@@ -29,9 +29,8 @@ color: #555;
 </head>
 
 <body>
-<h1>Engagement Messenger Testing - Number 03</h1>
+<h1>Engagement Messenger Testing - Number 04</h1>
 
-	
 <div style="display: flex; flex-direction: column; gap: 20px; max-width: 300px;">
   <button onclick="Contact()" style="padding: 12px 24px; font-size: 16px; cursor: pointer; border-radius: 6px; border: 1px solid #ccc; background-color: #007bff; color: white; transition: background-color 0.3s;">
     Contact Us with Defined Player ID
@@ -42,16 +41,17 @@ color: #555;
   </button>
 </div>
 
-	
 <!-- ServiceNow Engagement Messenger -->
 <script src="https://conwaresolutionssrosvsdemo9.service-now.com/scripts/sn_csm_ec.js?v=5.6"></script>
 <script>
 
 var ID;
-	
-//	ID = "8798798797444123";
 
-	var emContext = {
+// Use localStorage to store the playerID for logged-in users
+// If player is logged in, set the playerID
+// Example: localStorage.setItem("playerID", "01234567890");
+
+var emContext = {
   site: window.location.hostname,
   page: window.location.pathname,
   referrer: document.referrer,
@@ -60,80 +60,62 @@ var ID;
   source: "gaming_web"
 };
 
-/*
-SN_CSM_EC.init({
-moduleID: "https://conwaresolutionssrosvsdemo9.service-now.com/#91dfd2e4936df2501001be9887373cd6",
-	loadFeature: SN_CSM_EC.loadEMFeature()
-
-
-});
-
-*/
-
 function Contact() {
-console.log("Simulating Contact");
-SN_CSM_EC.init({
-moduleID: "https://conwaresolutionssrosvsdemo9.service-now.com/#91dfd2e4936df2501001be9887373cd6",
-//	loadFeature: SN_CSM_EC.loadEMFeature()
-
-loadFeature: StartEM(ID)
-});
+  console.log("Simulating Contact");
+  
+  // Store playerID in localStorage for logged-in users
+  localStorage.setItem("playerID", "01234567890"); // Set this dynamically when the user is logged in
+  
+  SN_CSM_EC.init({
+    moduleID: "https://conwaresolutionssrosvsdemo9.service-now.com/#91dfd2e4936df2501001be9887373cd6",
+    loadFeature: StartEM()
+  });
 }
 
-	
 function Contact2() {
-console.log("Simulating Contact");
-SN_CSM_EC.init({
-moduleID: "https://conwaresolutionssrosvsdemo9.service-now.com/#91dfd2e4936df2501001be9887373cd6",
-//	loadFeature: SN_CSM_EC.loadEMFeature()
-
-loadFeature: StartEMempty(ID)
-});
+  console.log("Simulating Contact");
+  
+  // Clear playerID for guest users
+  localStorage.removeItem("playerID"); // Clear the playerID for guest session
+  
+  SN_CSM_EC.init({
+    moduleID: "https://conwaresolutionssrosvsdemo9.service-now.com/#91dfd2e4936df2501001be9887373cd6",
+    loadFeature: StartEMempty()
+  });
 }
 
-function StartEM(userID){ 
+function StartEM() {
+  var playerID = localStorage.getItem("playerID");
 
-if(userID){
-	return SN_CSM_EC.loadEMFeature();
+  if (playerID) {
+    return SN_CSM_EC.loadEMFeature();
+  }
+
+  return { 
+    feature: "CHAT",
+    openOnLoad: true,
+    params: { 
+      "topic_id": "d5f3d71f833dba10b177a070ceaad3bc", 
+      "sysparm_queue": emContext,
+      "sysparm_delasport_branch": "wl-222",
+      "sysparm_delasport_player_id": playerID || ""
+    }
+  };
 }
 
-return { 
-		feature: "CHAT",
-		openOnLoad: true,
-		params: { 
-			"topic_id": "d5f3d71f833dba10b177a070ceaad3bc", 
-			"sysparm_queue":emContext, //pass the value to context vairable to route the chat request.
-			"sysparm_delasport_branch":"wl-222", //pass the value to context vairable to route the chat request.
-"sysparm_delasport_player_id":"01234567890" //pass the value to context vairable to route the chat request.
-
-			
-			} 
-	  } 
-}
-
-	
-function StartEMempty(userID){ 
-
-if(userID){
-	return SN_CSM_EC.loadEMFeature();
-}
-
-return { 
-		feature: "CHAT",
-		openOnLoad: true,
-		params: { 
-			"topic_id": "aa0e685053130010cf8cddeeff7b127d", 
-			"sysparm_queue":emContext, //pass the value to context vairable to route the chat request.
-			"sysparm_delasport_branch":"", //pass the value to context vairable to route the chat request.
-"sysparm_delasport_player_id":"" //pass the value to context vairable to route the chat request.
-
-			} 
-	  } 
+function StartEMempty() {
+  return { 
+    feature: "CHAT",
+    openOnLoad: true,
+    params: { 
+      "topic_id": "aa0e685053130010cf8cddeeff7b127d",
+      "sysparm_queue": emContext,
+      "sysparm_delasport_branch": "",
+      "sysparm_delasport_player_id": ""
+    }
+  };
 }
 
 </script>
-</body>
-</html>
-
 </body>
 </html>
