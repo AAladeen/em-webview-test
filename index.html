@@ -43,7 +43,8 @@ button {
 
 <h2>Contact Support</h2>
 
-<button id="chatBtn" onclick="startChat()">Start Chat</button>
+<button id="chatBtn" onclick="startChat()">Start Chat Safari Check</button>
+<button id="chatBtn" onclick="startChat1()">Start Chat no Check</button>
 
 <div id="safariWarning">
   <strong>Safari browser detected</strong><br><br>
@@ -68,7 +69,7 @@ function startChat() {
     document.getElementById("safariWarning").style.display = "block";
     return;
   }
-
+  
   // Embedded chat for Chromium browsers
   SN_CSM_EC.init({
     moduleID: "https://conwaresolutionssrosvsdemo9.service-now.com/#91dfd2e4936df2501001be9887373cd6",
@@ -76,6 +77,18 @@ function startChat() {
   });
 }
 
+
+  
+function startChat1() {
+  
+  // Embedded chat for Chromium browsers
+  SN_CSM_EC.init({
+    moduleID: "https://conwaresolutionssrosvsdemo9.service-now.com/#91dfd2e4936df2501001be9887373cd6",
+    loadFeature: SN_CSM_EC.loadEMFeature()
+  });
+}
+
+  
 function redirectToChat() {
   // SAME TAB redirect (Safari-safe, guest-safe)
   window.location.href =
