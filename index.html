@@ -41,7 +41,7 @@ button {
 
 <body>
 
-<h2>Contact Support</h2>
+<h2>Contact Support v2</h2>
 
 <button id="chatBtn" onclick="startChat()">Start Chat Safari Check</button>
 <button id="chatBtn" onclick="startChat1()">Start Chat no Check</button>
@@ -73,7 +73,7 @@ function startChat() {
   // Embedded chat for Chromium browsers
   SN_CSM_EC.init({
     moduleID: "https://conwaresolutionssrosvsdemo9.service-now.com/#91dfd2e4936df2501001be9887373cd6",
-    loadFeature: SN_CSM_EC.loadEMFeature()
+loadFeature: StartEMempty()
   });
 }
 
@@ -84,7 +84,7 @@ function startChat1() {
   // Embedded chat for Chromium browsers
   SN_CSM_EC.init({
     moduleID: "https://conwaresolutionssrosvsdemo9.service-now.com/#91dfd2e4936df2501001be9887373cd6",
-    loadFeature: SN_CSM_EC.loadEMFeature()
+loadFeature: StartEMempty()
   });
 }
 
@@ -94,6 +94,25 @@ function redirectToChat() {
   window.location.href =
     "https://conwaresolutionssrosvsdemo9.service-now.com/sn_va_web_client_app_embed.do?sysparm_liveagent_application=csm";
 }
+
+
+function StartEMempty(){ 
+
+return { 
+		feature: "CHAT",
+		openOnLoad: true,
+		params: { 
+			"topic_id": "d5f3d71f833dba10b177a070ceaad3bc", 
+			"sysparm_queue":emContext, //pass the value to context vairable to route the chat request.
+			"sysparm_delasport_branch":"wl-222", //pass the value to context vairable to route the chat request.
+"sysparm_delasport_player_id":"01234567890" //pass the value to context vairable to route the chat request.
+
+			
+			} 
+	  } 
+}
+
+  
 </script>
 
 </body>
