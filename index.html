@@ -41,7 +41,7 @@ button {
 
 <body>
 
-<h2>Contact Support V1</h2>
+<h2>Contact Support V2</h2>
 
 <button id="chatBtn" onclick="startChat()">Start Chat Safari Check</button>
 <button id="chatBtn" onclick="startChat1()">Start Chat no Check</button>
@@ -56,8 +56,11 @@ button {
 </div>
 
 <!-- ServiceNow VA Embed -->
-<script src="https://conwaresolutionssrosvsdemo9.service-now.com/scripts/sn_va_web_client.js"></script>
 
+<script src="https://conwaresolutionssrosvsdemo9.service-now.com/scripts/now-requestor-chat-popover-app/now-requestor-chat-popover-app.min.js?sysparm_substitute=false"></script>
+
+
+  
 <script>
 function isSafari() {
   return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
