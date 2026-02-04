@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,7 +42,7 @@ button {
 
 <body>
 
-<h2>Contact Support V2</h2>
+<h2>Contact Support v8 DE</h2>
 
 <button id="chatBtn" onclick="startChat()">Start Chat Safari Check</button>
 <button id="chatBtn" onclick="startChat1()">Start Chat no Check</button>
@@ -55,12 +56,9 @@ button {
   <button onclick="redirectToChat()">Continue to Chat</button>
 </div>
 
-<!-- ServiceNow VA Embed -->
+<!-- ServiceNow Engagement Messenger -->
+<script src="https://conwaresolutionssrosvsdemo9.service-now.com/scripts/sn_csm_ec.js?v=5.6"></script>
 
-<script src="https://conwaresolutionssrosvsdemo9.service-now.com/scripts/now-requestor-chat-popover-app/now-requestor-chat-popover-app.min.js?sysparm_substitute=false"></script>
-
-
-  
 <script>
 function isSafari() {
   return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
@@ -73,64 +71,49 @@ function startChat() {
     return;
   }
   
-  // Virtual Agent (VA) embedding for non-Safari browsers
-  const chat = new ServiceNowChat({
-    instance: 'https://conwaresolutionssrosvsdemo9.service-now.com',
-    context: {
-      skip_load_history: 1
-    },
-    branding: {
-      bgColor: '#333',
-      primaryColor: '#000',
-      hoverColor: '#EFEFEF',
-      activeColor: '#AAA',
-      openIcon: 'custom-open.svg',
-      closeIcon: 'custom-close.svg',
-      sizeMultiplier: 1.6
-    },
-    offsetX: 50,
-    offsetY: 50,
-    position: 'left',
-    translations: {
-      'Open dialog': 'Open chat',
-      'Open Chat. {0} unread message(s)': 'Click to open',
-      'Close chat.': 'Click to close',
-    },
+  // Embedded chat for Chromium browsers
+  SN_CSM_EC.init({
+    moduleID: "https://conwaresolutionssrosvsdemo9.service-now.com/#91dfd2e4936df2501001be9887373cd6",
+loadFeature: StartEMempty()
   });
 }
 
+
+  
 function startChat1() {
-  // Virtual Agent (VA) embedding without any checks
-  const chat = new ServiceNowChat({
-    instance: 'https://conwaresolutionssrosvsdemo9.service-now.com',
-    context: {
-      skip_load_history: 1
-    },
-    branding: {
-      bgColor: '#333',
-      primaryColor: '#000',
-      hoverColor: '#EFEFEF',
-      activeColor: '#AAA',
-      openIcon: 'custom-open.svg',
-      closeIcon: 'custom-close.svg',
-      sizeMultiplier: 1.6
-    },
-    offsetX: 50,
-    offsetY: 50,
-    position: 'left',
-    translations: {
-      'Open dialog': 'Open chat',
-      'Open Chat. {0} unread message(s)': 'Click to open',
-      'Close chat.': 'Click to close',
-    },
+  
+  // Embedded chat for Chromium browsers
+  SN_CSM_EC.init({
+    moduleID: "https://conwaresolutionssrosvsdemo9.service-now.com/#91dfd2e4936df2501001be9887373cd6",
+loadFeature: StartEMempty()
   });
 }
 
+  
 function redirectToChat() {
   // SAME TAB redirect (Safari-safe, guest-safe)
   window.location.href =
     "https://conwaresolutionssrosvsdemo9.service-now.com/sn_va_web_client_app_embed.do?sysparm_liveagent_application=csm";
 }
+
+
+function StartEMempty(){ 
+
+return { 
+		feature: "CHAT",
+		openOnLoad: true,
+		params: { 
+			"topic_id": "ec9a10d25373101019dfddeeff7b1237", 
+		"language": "de",
+			"sysparm_delasport_branch":"wl-222", //pass the value to context vairable to route the chat request.
+"sysparm_delasport_player_id":"01234567890" //pass the value to context vairable to route the chat request.
+
+			
+			} 
+	  } 
+}
+
+  
 </script>
 
 </body>
